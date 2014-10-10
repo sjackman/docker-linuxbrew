@@ -9,12 +9,15 @@ all: $r/linuxbrew
 clean:
 	rm -f $r/linuxbrew $r/linuxbrew-core
 
+install-deps:
+	brew install docker
+
 push: all
 	docker push $r/ubuntu
 	docker push $r/linuxbrew-core
 	docker push $r/linuxbrew
 
-.PHONY: all clean push
+.PHONY: all clean install-deps push
 .DELETE_ON_ERROR:
 .SECONDARY:
 
