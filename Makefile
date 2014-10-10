@@ -39,7 +39,7 @@ $r/%: %/Dockerfile $r/stamp
 	docker build -t $r/$* $*
 	docker images --no-trunc |awk '$$1=="$@" {print $$3}' >$@
 
-docker-images.png: build
+docker-images.png:
 	docker images --viz |dot -Tpng -o docker-images.png
 
 index.html: README.md docker-images.png
