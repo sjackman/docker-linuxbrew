@@ -9,7 +9,7 @@ all: build docker-images.png
 clean:
 	rm -f */image docker-images.png
 
-build: latest/image
+build: latest/image standalone/image
 
 install-deps:
 	brew install docker graphviz
@@ -18,6 +18,7 @@ push: all
 	docker push $r:ubuntu
 	docker push $r:core
 	docker push $r:latest
+	docker push $r:standalone
 
 .PHONY: all clean install-deps push
 .DELETE_ON_ERROR:
@@ -26,6 +27,7 @@ push: all
 # Image dependencies
 core/image: ubuntu/image
 latest/image: core/image
+standalone/image: core/image
 
 %/image: %/Dockerfile
 	docker build -t $r:$* $*
