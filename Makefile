@@ -4,13 +4,19 @@
 # The Docker Hub repository
 r=sjackman
 
-all: $r/linuxbrew
+all: build docker-images.png
 
 clean:
-	rm -f $r/linuxbrew $r/linuxbrew-core
+	rm -f \
+		$r/linuxbrew \
+		$r/linuxbrew-core \
+		$r/ubuntu \
+		docker-images.png
+
+build: $r/linuxbrew
 
 install-deps:
-	brew install docker
+	brew install docker graphviz
 
 push: all
 	docker push $r/ubuntu
@@ -32,3 +38,6 @@ $r/stamp:
 $r/%: %/Dockerfile $r/stamp
 	docker build -t $r/$* $*
 	docker images --no-trunc |awk '$$1=="$@" {print $$3}' >$@
+
+docker-images.png: build
+	docker images --viz |dot -Tpng -o docker-images.png
