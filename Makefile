@@ -1,14 +1,23 @@
-all: linuxbrew/stamp
+# Build the Linuxbrew Docker images
+# Written by Shaun Jackman
+
+r=sjackman
+
+all: $r/linuxbrew
 
 clean:
-	rm -f linuxbrew-core/stamp linuxbrew/stamp
+	rm -f $r/linuxbrew $r/linuxbrew-core
 
 .PHONY: all clean
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-linuxbrew/stamp: linuxbrew-core/stamp
-
-%/stamp: %/Dockerfile
-	docker build -t sjackman/$* $*
+$r/stamp:
+	mkdir -p $r
 	touch $@
+
+$r/linuxbrew: $r/linuxbrew-core
+
+$r/%: %/Dockerfile $r/stamp
+	docker build -t $r/$* $*
+	docker images --no-trunc |awk '$$1=="$@" {print $$3}' >$@
