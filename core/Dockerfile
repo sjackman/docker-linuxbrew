@@ -1,4 +1,4 @@
-FROM sjackman/ubuntu
+FROM sjackman/linuxbrew:ubuntu
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
 RUN apt-get install -y curl g++ make ruby

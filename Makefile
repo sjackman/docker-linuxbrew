@@ -1,42 +1,34 @@
-# Build the Linuxbrew Docker images
+# Build Linuxbrew Docker images
 # Written by Shaun Jackman
 
 # The Docker Hub repository
-r=sjackman
+r=sjackman/linuxbrew
 
 all: build docker-images.png
 
 clean:
-	rm -f \
-		$r/linuxbrew \
-		$r/linuxbrew-core \
-		$r/ubuntu \
-		docker-images.png
+	rm -f */image docker-images.png
 
-build: $r/linuxbrew
+build: latest/image
 
 install-deps:
 	brew install docker graphviz
 
 push: all
-	docker push $r/ubuntu
-	docker push $r/linuxbrew-core
-	docker push $r/linuxbrew
+	docker push $r:ubuntu
+	docker push $r:core
+	docker push $r:latest
 
 .PHONY: all clean install-deps push
 .DELETE_ON_ERROR:
 .SECONDARY:
 
 # Image dependencies
-$r/linuxbrew-core: $r/ubuntu
-$r/linuxbrew: $r/linuxbrew-core
+core/image: ubuntu/image
+latest/image: core/image
 
-$r/stamp:
-	mkdir -p $r
-	touch $@
-
-$r/%: %/Dockerfile $r/stamp
-	docker build -t $r/$* $*
+%/image: %/Dockerfile
+	docker build -t $r:$* $*
 	docker images --no-trunc |awk '$$1=="$@" {print $$3}' >$@
 
 docker-images.png:
