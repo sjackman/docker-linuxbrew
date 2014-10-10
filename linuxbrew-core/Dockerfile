@@ -1,7 +1,6 @@
-FROM ubuntu
+FROM sjackman/ubuntu
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
-RUN apt-get update
 RUN apt-get install -y curl g++ make ruby
 
 RUN useradd -m linuxbrew

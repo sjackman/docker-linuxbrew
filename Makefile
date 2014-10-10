@@ -1,6 +1,7 @@
 # Build the Linuxbrew Docker images
 # Written by Shaun Jackman
 
+# The Docker Hub repository
 r=sjackman
 
 all: $r/linuxbrew
@@ -12,11 +13,13 @@ clean:
 .DELETE_ON_ERROR:
 .SECONDARY:
 
+# Image dependencies
+$r/linuxbrew-core: $r/ubuntu
+$r/linuxbrew: $r/linuxbrew-core
+
 $r/stamp:
 	mkdir -p $r
 	touch $@
-
-$r/linuxbrew: $r/linuxbrew-core
 
 $r/%: %/Dockerfile $r/stamp
 	docker build -t $r/$* $*
