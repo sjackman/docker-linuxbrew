@@ -41,3 +41,6 @@ $r/%: %/Dockerfile $r/stamp
 
 docker-images.png: build
 	docker images --viz |dot -Tpng -o docker-images.png
+
+index.html: README.md docker-images.png
+	pandoc -o $@ $<
