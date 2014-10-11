@@ -15,7 +15,6 @@ install-deps:
 	brew install docker graphviz
 
 push: all
-	docker push $r:ubuntu
 	docker push $r:core
 	docker push $r:latest
 	docker push $r:standalone
@@ -25,7 +24,6 @@ push: all
 .SECONDARY:
 
 # Image dependencies
-core/image: ubuntu/image
 latest/image: core/image
 standalone/image: core/image
 
