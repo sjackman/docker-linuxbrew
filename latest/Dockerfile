@@ -1,4 +1,4 @@
-FROM sjackman/linuxbrew:core
+FROM sjackman/linuxbrew-core
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
 USER root
