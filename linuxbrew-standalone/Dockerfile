@@ -1,10 +1,6 @@
 FROM sjackman/linuxbrew-core
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
-USER root
-RUN apt-get install -y gawk m4 patch
-
-USER linuxbrew
 RUN mkdir ~/.linuxbrew/lib \
 	&& ln -s lib ~/.linuxbrew/lib64 \
 	&& ln -s /usr/lib64/libstdc++.so.6 /lib64/libgcc_s.so.1 ~/.linuxbrew/lib/

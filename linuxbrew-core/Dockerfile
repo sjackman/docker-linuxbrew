@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y curl g++ make ruby
+RUN apt-get install -y curl g++ gawk m4 make patch ruby
 
 RUN useradd -m linuxbrew
 
