@@ -6,3 +6,4 @@ RUN apt-get install -y build-essential curl git m4 ruby texinfo libbz2-dev libcu
 
 USER linuxbrew
 RUN brew install pkg-config
+RUN brew doctor
