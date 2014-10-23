@@ -1,6 +1,10 @@
 FROM sjackman/linuxbrew-core
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
+USER root
+RUN ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
+USER linuxbrew
+
 RUN mkdir ~/.linuxbrew/lib \
 	&& ln -s lib ~/.linuxbrew/lib64 \
 	&& ln -s /usr/lib64/libstdc++.so.6 /lib64/libgcc_s.so.1 ~/.linuxbrew/lib/
