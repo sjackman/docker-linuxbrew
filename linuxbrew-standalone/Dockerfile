@@ -2,6 +2,7 @@ FROM sjackman/linuxbrew-core
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
 USER root
+RUN apt-get -y install tcl
 RUN ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
 USER linuxbrew
 
