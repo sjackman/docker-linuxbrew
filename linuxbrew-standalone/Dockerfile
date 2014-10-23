@@ -6,8 +6,8 @@ RUN apt-get -y install tcl
 RUN ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
 USER linuxbrew
 
-RUN mkdir ~/.linuxbrew/lib \
-	&& ln -s lib ~/.linuxbrew/lib64
+RUN mkdir $HOME/.linuxbrew/lib \
+	&& ln -s lib $HOME/.linuxbrew/lib64
 
 RUN brew install glibc \
 	&& brew unlink glibc
@@ -23,9 +23,9 @@ RUN brew install curl expat git
 RUN brew tap homebrew/dupes
 RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
 
-RUN ln -s ncursesw/curses.h ~/.linuxbrew/include/
+RUN ln -s ncursesw/curses.h $HOME/.linuxbrew/include/
 
 RUN brew install ruby
 
-ENV PATH ~/.linuxbrew/bin:~/.linuxbrew/sbin
+ENV PATH $HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin
 RUN brew doctor
