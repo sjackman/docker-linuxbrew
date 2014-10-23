@@ -25,9 +25,7 @@ RUN brew install curl expat git
 RUN brew tap homebrew/dupes
 RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
 
-RUN ln -s ncursesw/curses.h ~/.linuxbrew/include/ \
-	&& ln -s libncursesw.so ~/.linuxbrew/lib/libncurses.so \
-	&& ln -s libncursesw.so ~/.linuxbrew/lib/libcurses.so
+RUN ln -s ncursesw/curses.h ~/.linuxbrew/include/
 
 RUN brew install ruby
 
