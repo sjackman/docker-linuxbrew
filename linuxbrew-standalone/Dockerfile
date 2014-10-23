@@ -18,7 +18,7 @@ RUN brew reinstall binutils
 RUN brew link glibc
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc -v
-RUN rm -f ~/.linuxbrew/lib/{libstdc++.so.6,libgcc_s.so.1}
+RUN rm ~/.linuxbrew/lib/libstdc++.so.6 ~/.linuxbrew/lib/libgcc_s.so.1
 RUN brew link gcc
 
 RUN brew install curl expat git
