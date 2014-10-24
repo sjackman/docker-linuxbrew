@@ -26,5 +26,4 @@ RUN ln -s ncursesw/curses.h $HOME/.linuxbrew/include/
 
 RUN brew install ruby
 
-ENV PATH /home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
 RUN brew doctor
