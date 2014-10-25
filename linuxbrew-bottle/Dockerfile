@@ -19,8 +19,9 @@ RUN brew reinstall binutils
 
 RUN brew link glibc
 RUN brew install gcc --with-glibc --only-dependencies
-RUN brew install gcc --with-glibc -v
+RUN brew install gcc --with-glibc
 
+ENV HOMEBREW_VERBOSE 1
 RUN brew install curl expat git
 RUN brew tap homebrew/dupes
 RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
@@ -32,6 +33,5 @@ RUN brew install ruby
 RUN brew doctor
 
 ENV HOMEBREW_DEBUG 1
-ENV HOMEBREW_VERBOSE 1
 RUN brew list
 RUN brew bottle `brew list`
