@@ -37,5 +37,5 @@ WORKDIR bottles
 ENV HOMEBREW_DEBUG 1
 ENV HOMEBREW_VERBOSE 1
 RUN brew list
-RUN brew bottle --rb `brew list`
+RUN brew bottle --rb `brew list |sed /^glibc/d`
 RUN brew bottle --merge *.bottle.rb
