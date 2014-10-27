@@ -10,7 +10,7 @@ t=develop
 all: build docker-images.png
 
 clean:
-	rm -f */image docker-images.png
+	rm -f */image docker-images.gv docker-images.png
 
 build: linuxbrew/image linuxbrew-standalone/image
 
@@ -34,8 +34,11 @@ linuxbrew-standalone/image: linuxbrew-core/image
 	docker build -t $u/$*:$t $*
 	docker images --no-trunc |awk '$$1 ":" $$2 =="$u/$*:$t" {print $$3}' >$@
 
-docker-images.png:
-	docker images --viz |dot -Tpng -o docker-images.png
+docker-images.gv:
+	docker images --viz >$@
+
+%.png: %.gv
+	dot -Tpng -o docker-images.png $<
 
 index.html: README.md docker-images.png
 	pandoc -o $@ $<
