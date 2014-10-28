@@ -5,6 +5,7 @@ RUN apt-get update
 RUN apt-get install -y curl g++ gawk m4 make patch ruby tcl
 
 RUN useradd -m linuxbrew
+RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
 
 USER linuxbrew
 WORKDIR /home/linuxbrew
