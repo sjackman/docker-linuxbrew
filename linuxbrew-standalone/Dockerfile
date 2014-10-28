@@ -16,7 +16,7 @@ RUN brew reinstall binutils
 
 RUN brew link glibc
 RUN brew install gcc --with-glibc --only-dependencies
-RUN brew install gcc --with-glibc -v
+RUN brew install gcc --with-glibc
 
 RUN brew install curl expat git
 RUN brew tap homebrew/dupes
