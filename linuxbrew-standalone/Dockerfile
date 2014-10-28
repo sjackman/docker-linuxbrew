@@ -15,12 +15,14 @@ RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/maste
 RUN brew reinstall binutils
 
 RUN brew link glibc
+RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
 RUN brew install curl expat git
 RUN brew tap homebrew/dupes
-RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
+RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep \
+	libpng libxml2 libxslt make ncurses readline
 
 RUN ln -s ncursesw/curses.h $HOME/.linuxbrew/include/
 
