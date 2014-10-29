@@ -18,7 +18,7 @@ RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/maste
 RUN brew reinstall binutils
 
 RUN brew link glibc
-RUN brew install patchelf
+RUN brew install patchelf --with-static-libstdc++
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
@@ -38,5 +38,5 @@ WORKDIR bottles
 ENV HOMEBREW_DEBUG 1
 ENV HOMEBREW_VERBOSE 1
 RUN brew list
-RUN brew bottle --rb `brew list |egrep -vw 'glibc|patchelf'`
+RUN brew bottle --rb `brew list |egrep -vw 'glibc'`
 RUN brew bottle --merge *.bottle.rb
