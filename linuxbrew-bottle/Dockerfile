@@ -18,7 +18,7 @@ RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/maste
 RUN brew reinstall binutils
 
 RUN brew link glibc
-RUN brew install patchelf --with-static-libstdc++
+RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
