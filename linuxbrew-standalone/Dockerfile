@@ -19,9 +19,9 @@ RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
-RUN brew install curl expat git
+RUN brew install bzip2 curl expat git
 RUN brew tap homebrew/dupes
-RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep \
+RUN brew install coreutils findutils gawk gnu-sed gnu-which grep \
 	libpng libxml2 libxslt make ncurses readline
 
 RUN ln -s ncursesw/curses.h ncursesw/ncurses.h ncursesw/term.h ncursesw/termcap.h $HOME/.linuxbrew/include/
