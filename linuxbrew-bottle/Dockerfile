@@ -25,12 +25,14 @@ RUN brew install gcc --with-glibc
 RUN brew bottle gcc
 RUN brew postinstall gcc
 
-RUN brew install curl expat git
+RUN brew install bzip2 curl expat git
 RUN brew tap homebrew/dupes
-RUN brew install bzip2 coreutils findutils gawk gnu-sed gnu-which grep \
+RUN brew install coreutils findutils gawk gnu-sed gnu-which grep \
 	libpng libxml2 libxslt make ncurses readline
 
-RUN ln -s ncursesw/curses.h $HOME/.linuxbrew/include/
+RUN ln -s ncursesw/curses.h ncursesw/ncurses.h ncursesw/term.h ncursesw/termcap.h $HOME/.linuxbrew/include/
+RUN ln -s libncurses.a $HOME/.linuxbrew/lib/libcurses.a
+RUN ln -s libncurses.so $HOME/.linuxbrew/lib/libcurses.so
 
 RUN brew install ruby
 
