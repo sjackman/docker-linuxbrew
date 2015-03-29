@@ -8,13 +8,13 @@ USER linuxbrew
 RUN mkdir $HOME/.linuxbrew/lib \
 	&& ln -s lib $HOME/.linuxbrew/lib64
 
-RUN brew install glibc \
-	&& brew unlink glibc
+RUN brew install glibc
 
+RUN brew unlink glibc
 RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/zlib.rb
 RUN brew reinstall binutils
-
 RUN brew link glibc
+
 RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
