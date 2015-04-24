@@ -9,6 +9,7 @@ RUN mkdir $HOME/.linuxbrew/lib \
 	&& ln -s lib $HOME/.linuxbrew/lib64
 
 ENV HOMEBREW_BUILD_BOTTLE dependencies
+ENV HOMEBREW_BUILD_FROM_SOURCE 1
 ENV HOMEBREW_DEVELOPER 1
 
 RUN brew install glibc
