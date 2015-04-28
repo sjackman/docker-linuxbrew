@@ -27,6 +27,7 @@ RUN brew bottle gcc
 RUN brew postinstall gcc
 
 RUN brew install bzip2 curl expat git
+RUN brew postinstall openssl
 RUN brew tap homebrew/dupes
 RUN brew install coreutils findutils gawk gnu-sed gnu-which grep \
 	libpng libxml2 libxslt make ncurses readline
