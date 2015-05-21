@@ -19,7 +19,10 @@ RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
-RUN brew install bzip2 curl expat git
+# Install tcl for git
+RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/tcl-tk.rb
+
+RUN brew install bzip2 curl git
 RUN brew tap homebrew/dupes
 RUN brew install coreutils findutils gawk gnu-sed gnu-which grep \
 	libpng libxml2 libxslt make ncurses readline
