@@ -20,7 +20,7 @@ RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc
 
 # Install tcl for git
-RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/tcl-tk.rb
+RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/tcl-tk.rb --without-tk
 
 RUN brew install bzip2 curl git
 RUN brew tap homebrew/dupes
