@@ -12,7 +12,7 @@ all: build docker-images.png
 clean:
 	rm -f */image docker-images.gv docker-images.png
 
-build: linuxbrew/image linuxbrew-standalone/image
+build: linuxbrew/image linuxbrew-gcc/image linuxbrew-standalone/image
 
 install-deps:
 	brew install docker graphviz
@@ -20,6 +20,7 @@ install-deps:
 push: all
 	docker push $u/linuxbrew-core:$t
 	docker push $u/linuxbrew:$t
+	docker push $u/linuxbrew-gcc:$t
 	docker push $u/linuxbrew-standalone:$t
 
 .PHONY: all clean install-deps push
@@ -28,6 +29,7 @@ push: all
 
 # Image dependencies
 linuxbrew/image: linuxbrew-core/image
+linuxbrew-gcc/image: linuxbrew-core/image
 linuxbrew-standalone/image: linuxbrew-core/image
 
 %/image: %/Dockerfile
