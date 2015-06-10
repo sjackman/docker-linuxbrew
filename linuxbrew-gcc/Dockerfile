@@ -19,4 +19,5 @@ RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew install gcc --with-glibc -v
 
-RUN brew doctor
+# Warning: Git could not be found in your PATH.
+RUN brew doctor || true
