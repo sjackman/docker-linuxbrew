@@ -9,6 +9,10 @@ ENV HOMEBREW_DEVELOPER 1
 RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/tcl-tk.rb --without-tk
 
 RUN brew install bzip2 curl git
+
+# Fix error setting certificate verify locations
+RUN brew postinstall openssl
+
 RUN brew tap homebrew/dupes
 RUN brew install coreutils findutils gawk gnu-sed gnu-which grep make
 RUN brew install ruby
