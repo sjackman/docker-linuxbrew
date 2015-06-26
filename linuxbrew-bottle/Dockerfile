@@ -5,10 +5,11 @@ ENV HOMEBREW_BUILD_BOTTLE dependencies
 ENV HOMEBREW_BUILD_FROM_SOURCE 1
 ENV HOMEBREW_DEVELOPER 1
 
-# Install tcl for git
-RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/tcl-tk.rb --without-tk
+RUN brew install bzip2 curl
 
-RUN brew install bzip2 curl git
+# Install git without tcl-tk to prevent the error:
+# Tapping homebrew/dupes. You must: brew install git
+RUN brew install git --with-brewed-curl --with-brewed-openssl --without-tcl-tk
 
 # Fix error setting certificate verify locations
 RUN brew postinstall openssl
