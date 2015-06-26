@@ -7,12 +7,13 @@ ENV HOMEBREW_DEVELOPER 1
 
 RUN brew install bzip2 curl
 
+# Fix error setting certificate verify locations
+# and Error: Failed to download resource
+RUN brew postinstall openssl
+
 # Install git without tcl-tk to prevent the error:
 # Tapping homebrew/dupes. You must: brew install git
 RUN brew install git --with-brewed-curl --with-brewed-openssl --without-tcl-tk
-
-# Fix error setting certificate verify locations
-RUN brew postinstall openssl
 
 RUN brew tap homebrew/dupes
 RUN brew install coreutils findutils gawk gnu-sed gnu-which grep make
