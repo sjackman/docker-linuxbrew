@@ -11,7 +11,6 @@ RUN mkdir $HOME/.linuxbrew/lib \
 RUN brew install glibc
 
 RUN brew unlink glibc
-RUN brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/zlib.rb
 RUN brew reinstall binutils
 RUN brew link glibc
 
