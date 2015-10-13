@@ -5,11 +5,13 @@ ENV HOMEBREW_BUILD_BOTTLE dependencies
 ENV HOMEBREW_BUILD_FROM_SOURCE 1
 ENV HOMEBREW_DEVELOPER 1
 
-RUN brew install bzip2 curl
+RUN brew install openssl
 
 # Fix error setting certificate verify locations
-# and Error: Failed to download resource
+# and Error: Failed to download resource "openssl--cacert"
 RUN brew postinstall openssl
+
+RUN brew install bzip2 curl
 
 # Install git without tcl-tk to prevent the error:
 # Tapping homebrew/dupes. You must: brew install git
