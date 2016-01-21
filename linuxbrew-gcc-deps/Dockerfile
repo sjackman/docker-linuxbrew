@@ -11,7 +11,11 @@ RUN mkdir $HOME/.linuxbrew/lib \
 RUN brew install glibc
 
 RUN brew unlink glibc
-RUN brew reinstall binutils
+# Work around Error: Invalid cross-device link
+# See https://support.docker.com/hc/requests/10099
+# RUN brew reinstall binutils
+RUN brew remove binutils
+RUN brew install binutils
 RUN brew link glibc
 
 RUN brew install patchelf
