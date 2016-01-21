@@ -6,5 +6,4 @@ RUN apt-get install -y build-essential curl default-jdk gawk gfortran git m4 rub
 	libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
 
 USER linuxbrew
-RUN brew install pkg-config
 RUN brew doctor
