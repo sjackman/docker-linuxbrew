@@ -8,17 +8,9 @@ USER linuxbrew
 RUN mkdir $HOME/.linuxbrew/lib \
 	&& ln -s lib $HOME/.linuxbrew/lib64
 
-RUN brew install glibc
+RUN brew install zlib glibc patchelf
+RUN brew patchelf binutils
 
-RUN brew unlink glibc
-# Work around Error: Invalid cross-device link
-# See https://support.docker.com/hc/requests/10099
-# RUN brew reinstall binutils
-RUN brew remove binutils
-RUN brew install binutils
-RUN brew link glibc
-
-RUN brew install patchelf
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew fetch gcc
 
