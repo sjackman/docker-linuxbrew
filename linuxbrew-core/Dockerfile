@@ -1,6 +1,8 @@
 FROM ubuntu
 MAINTAINER Shaun Jackman <sjackman@gmail.com>
 
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+
 RUN apt-get update
 RUN apt-get install -y curl g++ gawk m4 make patch ruby tcl
 
