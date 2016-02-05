@@ -8,9 +8,6 @@ USER linuxbrew
 RUN mkdir $HOME/.linuxbrew/lib \
 	&& ln -s lib $HOME/.linuxbrew/lib64
 
-RUN brew install glibc patchelf
-RUN brew patchelf binutils
-
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew fetch gcc
 
