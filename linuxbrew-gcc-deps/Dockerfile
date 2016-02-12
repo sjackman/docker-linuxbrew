@@ -5,9 +5,6 @@ USER root
 RUN ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
 USER linuxbrew
 
-RUN mkdir $HOME/.linuxbrew/lib \
-	&& ln -s lib $HOME/.linuxbrew/lib64
-
 RUN brew install gcc --with-glibc --only-dependencies
 RUN brew fetch gcc
 
