@@ -31,7 +31,6 @@ push: all
 linuxbrew/image: linuxbrew-core/image
 linuxbrew-gcc/image: linuxbrew-core/image
 linuxbrew-standalone/image: linuxbrew-gcc/image
-linuxbrew-bottle/image: linuxbrew-gcc/image
 
 %/image: %/Dockerfile
 	docker build -t $u/$*:$t $*
